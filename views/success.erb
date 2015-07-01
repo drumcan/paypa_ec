@@ -5,6 +5,8 @@
       <form action="/confirm" method="POST" id="confirmation">
         <p>
           <label>Confirm $10</label>
+          <%= @token %>
+          <%= @payer_id %>
         </p>
           <input class="submit-button" type="submit" />
       </form>
