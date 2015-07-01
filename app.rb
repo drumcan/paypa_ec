@@ -1,6 +1,5 @@
 require "rubygems"
 require 'sinatra'
-require "sinatra/activerecord"
 require 'net/http'
 require 'uri'
 
