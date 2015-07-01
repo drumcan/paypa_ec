@@ -3,9 +3,6 @@ require 'sinatra'
 require 'net/http'
 require 'uri'
 
-@token
-@payer_id
-
 post "/ec" do 
   resp = Net::HTTP.post_form URI('https://api-3t.sandbox.paypal.com/nvp'), {
   	'METHOD' => 'SetExpressCheckout',
