@@ -40,8 +40,8 @@ post "/confirm" do
   	'PAYMENTREQUEST_0_AMT' => '10.00',
   	'PAYMENTREQUEST_0_CURRENCYCODE' => 'USD',
   	'PAYMENTREQUEST_0_PAYMENTACTION' => 'SALE',
-  	'TOKEN' => @token,
-  	'PAYERID' => @payer_id
+  	'TOKEN' => "#{@token}",
+  	'PAYERID' => "#{@payer_id}"
   }	
 
   response = URI.decode(resp.body).to_str
