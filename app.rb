@@ -47,8 +47,8 @@ post "/confirm" do
   	'PAYERID' => @payer_id
   }	
 
-  response = parse(URI.decode(resp.body).to_str)
-  puts response
+  response = URI.decode(resp.body).to_str
+  p response
 end
 
 
