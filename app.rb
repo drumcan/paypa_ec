@@ -12,11 +12,13 @@ post "/ec" do
   	'SIGNATURE' => 'AIHR.P3zrJxO3juFwINITaOoNj5eAquTzGgFuExWtKuvvm.lW2bWM.iW',
   	'PAYMENTREQUEST_0_AMT' => '12.13',
   	'PAYMENTREQUEST_0_CURRENCYCODE' => 'USD',
+  	'PAYMENTREQUEST_0_PAYMENTACTION' => 'SALE',
   	'RETURNURL' => 'https://paypalec.herokuapp.com/success',
   	'CANCELURL' => 'https://paypalec.herokuapp.com/cancel'
   }	
-  p response["TOKEN"]
+  
   response = parse(URI.decode(resp.body).to_str)
+  p response["TOKEN"]
   redirect "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=#{response["TOKEN"]}"
 end
 
