@@ -12,8 +12,8 @@ post "/ec" do
   	'SIGNATURE' => 'AIHR.P3zrJxO3juFwINITaOoNj5eAquTzGgFuExWtKuvvm.lW2bWM.iW',
   	'PAYMENTREQUEST_0_AMT' => '12.13',
   	'PAYMENTREQUEST_0_CURRENCYCODE' => 'USD',
-  	'RETURNURL' => 'http://success.com',
-  	'CANCELURL' => 'http://cancel.com'
+  	'RETURNURL' => 'https://paypalec.herokuapp.com/success',
+  	'CANCELURL' => 'https://paypalec.herokuapp.com/cancel'
   }	
 
   response = parse(URI.decode(resp.body).to_str)
@@ -23,6 +23,18 @@ end
 get "/ec" do
   erb :ec
 end
+
+get "/success" do
+  token = params['token']
+  payer_id = params['PayerID']
+  p token
+  p payer_id
+end
+  
+
+
+
+
 
 def parse(http_response)
     pairs = http_response.split("&")
