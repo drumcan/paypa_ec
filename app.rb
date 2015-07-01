@@ -49,6 +49,7 @@ post "/confirm" do
 
   response = parse(URI.decode(resp.body).to_str)
   p response
+end
 
 
 
