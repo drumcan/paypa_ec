@@ -35,7 +35,7 @@ end
 
 post "/confirm" do
   resp = Net::HTTP.post_form URI('https://api-3t.sandbox.paypal.com/nvp'), {
-  	'METHOD' => 'DoExpressCheckout',
+  	'METHOD' => 'DoExpressCheckoutPayment',
   	'VERSION' => '109.0',
   	'USER' => 'daniel.oconnor_api1.paypal.com',
   	'PWD' => 'DM6DWAL8P83XQE5M',
