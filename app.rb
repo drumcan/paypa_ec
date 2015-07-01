@@ -15,7 +15,7 @@ post "/ec" do
   	'RETURNURL' => 'https://paypalec.herokuapp.com/success',
   	'CANCELURL' => 'https://paypalec.herokuapp.com/cancel'
   }	
-
+  @token = response["TOKEN"]
   response = parse(URI.decode(resp.body).to_str)
   redirect "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=#{response["TOKEN"]}"
 end
@@ -25,7 +25,6 @@ get "/ec" do
 end
 
 get "/success" do
-  @token = params['token']
   @payer_id = params['PayerID']
   erb :success
 end
@@ -40,8 +39,8 @@ post "/confirm" do
   	'PAYMENTREQUEST_0_AMT' => '10.00',
   	'PAYMENTREQUEST_0_CURRENCYCODE' => 'USD',
   	'PAYMENTREQUEST_0_PAYMENTACTION' => 'SALE',
-  	'TOKEN' => "#{@token}",
-  	'PAYERID' => "#{@payer_id}"
+  	'TOKEN' => params[:token],
+  	'PAYERID' => params[:payer_id]
   }	
 
   response = URI.decode(resp.body).to_str
