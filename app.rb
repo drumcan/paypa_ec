@@ -15,7 +15,7 @@ post "/ec" do
   	'RETURNURL' => 'https://paypalec.herokuapp.com/success',
   	'CANCELURL' => 'https://paypalec.herokuapp.com/cancel'
   }	
-  @token = response["TOKEN"]
+  p response["TOKEN"]
   response = parse(URI.decode(resp.body).to_str)
   redirect "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=#{response["TOKEN"]}"
 end
@@ -25,6 +25,7 @@ get "/ec" do
 end
 
 get "/success" do
+  @token = params['token']
   @payer_id = params['PayerID']
   erb :success
 end
