@@ -46,8 +46,11 @@ post "/confirm" do
   	'PAYERID' => params[:payer_id]
   }	
 
-  response = URI.decode(resp.body).to_str
-  p response
+  response = parse(URI.decode(resp.body).to_str)
+  puts response['TOKEN']
+  puts response['CORRELATIONID']
+  puts response['PAYMENTINFO_0_PAYMENTSTATUS']
+  
 end
 
 
