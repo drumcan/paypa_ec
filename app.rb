@@ -47,9 +47,7 @@ post "/confirm" do
   }	
 
   response = parse(URI.decode(resp.body).to_str)
-  puts response['TOKEN']
-  puts response['CORRELATIONID']
-  puts response['PAYMENTINFO_0_PAYMENTSTATUS']
+  p response
   
 end
 
